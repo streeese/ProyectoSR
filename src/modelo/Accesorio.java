@@ -7,20 +7,20 @@ import java.util.Date;
  *
  * @author Stephanie
  */
-public class AlimentoGato {
+public class Accesorio {
     
-    private int alimentoGato;
+    private int idAccesorio;
     private String nombre;
     private String marca;
     private Date fechaIngreso;
     private int precio;
     private boolean estado;
 
-    public AlimentoGato() {
+    public Accesorio() {
     }
 
-    public AlimentoGato(int alimentoGato, String nombre, String Marca, Date fechaIngreso, int precio, boolean estado) {
-        this.alimentoGato = alimentoGato;
+    public Accesorio(int idAccesorio, String nombre, String marca, Date fechaIngreso, int precio, boolean estado) {
+        this.idAccesorio = idAccesorio;
         this.nombre = nombre;
         this.marca = marca;
         this.fechaIngreso = fechaIngreso;
