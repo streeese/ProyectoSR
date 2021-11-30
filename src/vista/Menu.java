@@ -7,7 +7,7 @@ package vista;
 
 /**
  *
- * @author Evelyn
+ * @author Stephanie
  */
 public class Menu extends javax.swing.JFrame {
 
@@ -75,6 +75,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu6.add(jmi_listarap);
 
         jmi_eliminarap.setText("Eliminar");
+        jmi_eliminarap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_eliminarapActionPerformed(evt);
+            }
+        });
         jMenu6.add(jmi_eliminarap);
 
         jMenu1.add(jMenu6);
@@ -162,6 +167,10 @@ public class Menu extends javax.swing.JFrame {
     private void jmi_listarapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_listarapActionPerformed
         new ListarAP().setVisible(true);
     }//GEN-LAST:event_jmi_listarapActionPerformed
+
+    private void jmi_eliminarapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminarapActionPerformed
+        new EliminarAP().setVisible(true);
+    }//GEN-LAST:event_jmi_eliminarapActionPerformed
 
     /**
      * @param args the command line arguments

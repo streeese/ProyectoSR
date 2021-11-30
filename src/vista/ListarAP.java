@@ -12,7 +12,7 @@ import modelo.AlimentoPerro;
 
 /**
  *
- * @author Evelyn
+ * @author Stephanie
  */
 public class ListarAP extends javax.swing.JFrame {
 
