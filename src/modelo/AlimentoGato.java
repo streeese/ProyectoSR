@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class AlimentoGato {
     
-    private int alimentoGato;
+    private int idAlimentoGato;
     private String nombre;
     private String marca;
     private Date fechaIngreso;
@@ -19,8 +19,8 @@ public class AlimentoGato {
     public AlimentoGato() {
     }
 
-    public AlimentoGato(int alimentoGato, String nombre, String Marca, Date fechaIngreso, int precio, boolean estado) {
-        this.alimentoGato = alimentoGato;
+    public AlimentoGato(int idAlimentoGato, String nombre, String Marca, Date fechaIngreso, int precio, boolean estado) {
+        this.idAlimentoGato = idAlimentoGato;
         this.nombre = nombre;
         this.marca = marca;
         this.fechaIngreso = fechaIngreso;
@@ -28,12 +28,12 @@ public class AlimentoGato {
         this.estado = estado;
     }
 
-    public int getAlimentoGato() {
-        return alimentoGato;
+    public int getidAlimentoGato() {
+        return idAlimentoGato;
     }
 
     public void setAlimentoGato(int alimentoGato) {
-        this.alimentoGato = alimentoGato;
+        this.idAlimentoGato = idAlimentoGato;
     }
 
     public String getNombre() {
