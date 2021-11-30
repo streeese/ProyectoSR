@@ -67,6 +67,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu6.add(jmi_actualizarap);
 
         jmi_listarap.setText("Listar");
+        jmi_listarap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_listarapActionPerformed(evt);
+            }
+        });
         jMenu6.add(jmi_listarap);
 
         jmi_eliminarap.setText("Eliminar");
@@ -153,6 +158,10 @@ public class Menu extends javax.swing.JFrame {
     private void jmi_agregarapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agregarapActionPerformed
         new AgregarAP().setVisible(true);
     }//GEN-LAST:event_jmi_agregarapActionPerformed
+
+    private void jmi_listarapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_listarapActionPerformed
+        new ListarAP().setVisible(true);
+    }//GEN-LAST:event_jmi_listarapActionPerformed
 
     /**
      * @param args the command line arguments
