@@ -32,7 +32,7 @@ public class AlimentoGato {
         return idAlimentoGato;
     }
 
-    public void setAlimentoGato(int alimentoGato) {
+    public void setidAlimentoGato(int alimentoGato) {
         this.idAlimentoGato = idAlimentoGato;
     }
 

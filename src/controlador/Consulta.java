@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import modelo.Accesorio;
 import modelo.AlimentoGato;
 /**
  *
@@ -169,14 +170,10 @@ public class Consulta {
         return listaP;
     }
         
+           
     
     
-    
-    
-    
-    
-    
-    public boolean agregar (AlimentoGato alimentoGato){
+    public boolean agregarG (AlimentoGato alimentoGato){
         
         Date date;
         try {
@@ -207,7 +204,7 @@ public class Consulta {
     }
     
     
-    public boolean actualizar(AlimentoGato alimentoGato){
+    public boolean actualizarG(AlimentoGato alimentoGato){
             
         Date date;
         try {
@@ -238,6 +235,258 @@ public class Consulta {
         }
     }
     
+    public boolean eliminarAg (int idAlimentoGato){
+        
+        try {
+            
+            Conexion con = new Conexion();
+            Connection cnx = con.obtenerConexion();
+            
+            
+            
+            String query = "DELETE FROM alimentoGato WHERE idAlimentoGato=?";
+            PreparedStatement pst = cnx.prepareStatement(query);
+            pst.setInt(1, idAlimentoGato);
+                        
+            pst.executeUpdate();
+            pst.close();
+            cnx.close();
+            
+            return true;
+            
+        } catch (SQLException e){
+            System.out.println("Error al eliminar alimentoGato" + e.getMessage());
+            return false;
+        }
+    }
+    
+    
+    public AlimentoGato buscarAlimentoGato(int idAlimentoGato){
+        
+        AlimentoGato alimentog = new AlimentoGato();
+        try {           
+            Conexion con = new Conexion();
+            Connection cnx = con.obtenerConexion();
+                        
+            
+            String query = "SELECT idAlimentoGato, nombre,marca,fechaIngreso,precio,estado FROM alimentoGato WHERE idAlimentoGato = ?";
+            PreparedStatement pst = cnx.prepareStatement(query);
+            pst.setInt(1, idAlimentoGato);
+            
+            ResultSet rs = pst.executeQuery();
+                        
+           if (rs.next()) {
+               alimentog.setidAlimentoGato(rs.getInt("idalimentogato"));
+               alimentog.setNombre(rs.getString("nombre"));
+               alimentog.setMarca(rs.getString("marca"));
+               alimentog.setFechaIngreso(rs.getDate("fechaingreso"));
+               alimentog.setPrecio(rs.getInt("precio"));
+               alimentog.setEstado(rs.getBoolean("estado"));
+           }
+            
+            rs.close();
+            pst.close();
+            cnx.close();
+            
+        } catch (SQLException e) {
+            System.out.println("Error al listar Alimento Gato por ID" + e.getMessage());           
+        }
+        return alimentog;
+    }
+            
+    public List<AlimentoGato> listarAG() {
+        
+        List<AlimentoGato> listaAG = new ArrayList<>();
+        try {           
+            Conexion con = new Conexion();
+            Connection cnx = con.obtenerConexion();
+                        
+            
+            String query = "SELECT idAlimentoGato, nombre,marca,fechaIngreso,precio,estado FROM alimentoGato ORDER BY nombre";
+            PreparedStatement pst = cnx.prepareStatement(query);
+            
+            ResultSet rs = pst.executeQuery();
+                        
+           while (rs.next()) {
+               AlimentoGato alimentog = new AlimentoGato();
+               alimentog.setidAlimentoGato(rs.getInt("idalimentogato"));
+               alimentog.setNombre(rs.getString("nombre"));
+               alimentog.setMarca(rs.getString("marca"));
+               alimentog.setFechaIngreso(rs.getDate("fechaingreso"));
+               alimentog.setPrecio(rs.getInt("precio"));
+               alimentog.setEstado(rs.getBoolean("estado"));
+               
+               listaAG.add(alimentog);
+           }
+            
+            rs.close();
+            pst.close();
+            cnx.close();
+            
+        } catch (SQLException e) {
+            System.out.println("Error al listar Alimento Gato" + e.getMessage());           
+        }
+        return listaAG;
+    }
+    
+    
+    
+    
+    
+     public boolean agregarA (Accesorio accesorio){
+        
+        Date date;
+        try {
+            
+            Conexion con = new Conexion();
+            Connection cnx = con.obtenerConexion();
+            
+            date = accesorio.getFechaIngreso();
+            
+            String query = "INSERT INTO accesorio(nombre,marca,fechaIngreso,precio,estado)VALUES(?,?,?,?,?)";
+            PreparedStatement pst = cnx.prepareStatement(query);
+            pst.setString(1, accesorio.getNombre());
+            pst.setString(2, accesorio.getMarca());
+            pst.setDate(3, new java.sql.Date(date.getTime()));
+            pst.setInt(4, accesorio.getPrecio());
+            pst.setBoolean(5, accesorio.isEstado());
+            
+            pst.executeUpdate();
+            pst.close();
+            cnx.close();
+            
+            return true;
+            
+        } catch (SQLException e){
+            System.out.println("Error al agregar accesorio" + e.getMessage());
+            return false;
+        }
+    }
+    
+    public boolean actualizarA(Accesorio accesorio){
+            
+        Date date;
+        try {
+            
+            Conexion con = new Conexion();
+            Connection cnx = con.obtenerConexion();
+            
+            date = accesorio.getFechaIngreso();
+            
+            String query = "UPDATE accesorio set nombre = ?,marca=?, fechaIngreso=?,precio=?, estado=? WHERE idAccesorio=?";
+            PreparedStatement pst = cnx.prepareStatement(query);
+            pst.setString(1, accesorio.getNombre());
+            pst.setString(2, accesorio.getMarca());
+            pst.setDate(3, new java.sql.Date(date.getTime()));
+            pst.setInt(4, accesorio.getPrecio());
+            pst.setBoolean(5, accesorio.isEstado());
+            pst.setInt(6, accesorio.getIdAccesorio());
+            
+            pst.executeUpdate();
+            pst.close();
+            cnx.close();
+            
+            return true;
+            
+        } catch (SQLException e){
+            System.out.println("Error al agregar accesorio" + e.getMessage());
+            return false;
+        }
+    }
+    
+    
+    public boolean eliminarA (int idAccesorio){
+        
+        try {
+            
+            Conexion con = new Conexion();
+            Connection cnx = con.obtenerConexion();
+            
+            
+            
+            String query = "DELETE FROM alimentoGato WHERE idAccesorio=?";
+            PreparedStatement pst = cnx.prepareStatement(query);
+            pst.setInt(1, idAccesorio);
+                        
+            pst.executeUpdate();
+            pst.close();
+            cnx.close();
+            
+            return true;
+            
+        } catch (SQLException e){
+            System.out.println("Error al eliminar accesorio" + e.getMessage());
+            return false;
+        }
+    }
+    
+    public Accesorio buscarAccesorio(int idAccesorio){
+        
+        Accesorio accesorio = new Accesorio();
+        try {           
+            Conexion con = new Conexion();
+            Connection cnx = con.obtenerConexion();
+                        
+            
+            String query = "SELECT idAccesorio, nombre,marca,fechaIngreso,precio,estado FROM alimentoGato WHERE idAccesorio = ?";
+            PreparedStatement pst = cnx.prepareStatement(query);
+            pst.setInt(1, idAccesorio);
+            
+            ResultSet rs = pst.executeQuery();
+                        
+           if (rs.next()) {
+               accesorio.setIdAccesorio(rs.getInt("idaccesorio"));
+               accesorio.setNombre(rs.getString("nombre"));
+               accesorio.setMarca(rs.getString("marca"));
+               accesorio.setFechaIngreso(rs.getDate("fechaingreso"));
+               accesorio.setPrecio(rs.getInt("precio"));
+               accesorio.setEstado(rs.getBoolean("estado"));
+           }
+            
+            rs.close();
+            pst.close();
+            cnx.close();
+            
+        } catch (SQLException e) {
+            System.out.println("Error al listar Accesorio por ID" + e.getMessage());           
+        }
+        return accesorio;
+    }
+            
+    public List<Accesorio> listarA() {
+        
+        List<Accesorio> listaA = new ArrayList<>();
+        try {           
+            Conexion con = new Conexion();
+            Connection cnx = con.obtenerConexion();
+                        
+            
+            String query = "SELECT idAccesorio, nombre,marca,fechaIngreso,precio,estado FROM accesorio ORDER BY nombre";
+            PreparedStatement pst = cnx.prepareStatement(query);
+            
+            ResultSet rs = pst.executeQuery();
+                        
+           while (rs.next()) {
+               Accesorio accesorio = new Accesorio();
+               accesorio.setIdAccesorio(rs.getInt("idaccesorio"));
+               accesorio.setNombre(rs.getString("nombre"));
+               accesorio.setMarca(rs.getString("marca"));
+               accesorio.setFechaIngreso(rs.getDate("fechaingreso"));
+               accesorio.setPrecio(rs.getInt("precio"));
+               accesorio.setEstado(rs.getBoolean("estado"));
+               
+               listaA.add(accesorio);
+           }
+            
+            rs.close();
+            pst.close();
+            cnx.close();
+            
+        } catch (SQLException e) {
+            System.out.println("Error al listar Alimento Gato" + e.getMessage());           
+        }
+        return listaA;
+    }
     
     }        
     
