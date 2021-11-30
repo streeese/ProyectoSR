@@ -230,7 +230,7 @@ public class Consulta {
             return true;
             
         } catch (SQLException e){
-            System.out.println("Error al agregar alimentoGato" + e.getMessage());
+            System.out.println("Error al actualizar alimentoGato" + e.getMessage());
             return false;
         }
     }
@@ -389,7 +389,7 @@ public class Consulta {
             return true;
             
         } catch (SQLException e){
-            System.out.println("Error al agregar accesorio" + e.getMessage());
+            System.out.println("Error al actualizar accesorio" + e.getMessage());
             return false;
         }
     }
@@ -483,7 +483,7 @@ public class Consulta {
             cnx.close();
             
         } catch (SQLException e) {
-            System.out.println("Error al listar Alimento Gato" + e.getMessage());           
+            System.out.println("Error al listar Accesorio" + e.getMessage());           
         }
         return listaA;
     }
