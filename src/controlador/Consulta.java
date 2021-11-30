@@ -7,6 +7,9 @@ import modelo.AlimentoPerro;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author Stephanie
@@ -97,6 +100,74 @@ public class Consulta {
         }
     }
         
+    public AlimentoPerro buscarAlimentoPerro(int idAlimentoPerro){
+        
+        AlimentoPerro alimentop = new AlimentoPerro();
+        try {           
+            Conexion con = new Conexion();
+            Connection cnx = con.obtenerConexion();
+                        
+            
+            String query = "SELECT idAlimentoPerro, nombre,marca,fechaIngreso,precio,estado FROM alimentoPerro WHERE idAlimentoPerro = ?";
+            PreparedStatement pst = cnx.prepareStatement(query);
+            pst.setInt(1, idAlimentoPerro);
+            
+            ResultSet rs = pst.executeQuery();
+                        
+           if (rs.next()) {
+               alimentop.setIdAlimentoPerro(rs.getInt("idalimentoperro"));
+               alimentop.setNombre(rs.getString("nombre"));
+               alimentop.setMarca(rs.getString("marca"));
+               alimentop.setFechaIngreso(rs.getDate("fechaingreso"));
+               alimentop.setPrecio(rs.getInt("precio"));
+               alimentop.setEstado(rs.getBoolean("estado"));
+           }
+            
+            rs.close();
+            pst.close();
+            cnx.close();
+            
+        } catch (SQLException e) {
+            System.out.println("Error al listar Alimento Perro por ID" + e.getMessage());           
+        }
+        return alimentop;
+    }
+            
+    public List<AlimentoPerro> listarAP() {
+        
+        List<AlimentoPerro> listaP = new ArrayList<>();
+        try {           
+            Conexion con = new Conexion();
+            Connection cnx = con.obtenerConexion();
+                        
+            
+            String query = "SELECT idAlimentoPerro, nombre,marca,fechaIngreso,precio,estado FROM alimentoPerro ORDER BY nombre";
+            PreparedStatement pst = cnx.prepareStatement(query);
+            
+            ResultSet rs = pst.executeQuery();
+                        
+           while (rs.next()) {
+               AlimentoPerro alimentop = new AlimentoPerro();
+               alimentop.setIdAlimentoPerro(rs.getInt("idalimentoperro"));
+               alimentop.setNombre(rs.getString("nombre"));
+               alimentop.setMarca(rs.getString("marca"));
+               alimentop.setFechaIngreso(rs.getDate("fechaingreso"));
+               alimentop.setPrecio(rs.getInt("precio"));
+               alimentop.setEstado(rs.getBoolean("estado"));
+               
+               listaP.add(alimentop);
+           }
+            
+            rs.close();
+            pst.close();
+            cnx.close();
+            
+        } catch (SQLException e) {
+            System.out.println("Error al listar Alimento Perro" + e.getMessage());           
+        }
+        return listaP;
+    }
+        
+    }        
     
-    
-}
+
