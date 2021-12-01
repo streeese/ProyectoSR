@@ -92,6 +92,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu7.setText("Alimento Gato");
 
         jmi_agregarag.setText("Agregar");
+        jmi_agregarag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_agregaragActionPerformed(evt);
+            }
+        });
         jMenu7.add(jmi_agregarag);
 
         jmi_actualizarag.setText("Actualizar");
@@ -113,6 +118,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu8.setText("Accesorios");
 
         jmi_agregarac.setText("Agregar");
+        jmi_agregarac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_agregaracActionPerformed(evt);
+            }
+        });
         jMenu8.add(jmi_agregarac);
 
         jmi_actualizarac.setText("Actualizar");
@@ -180,6 +190,14 @@ public class Menu extends javax.swing.JFrame {
     private void jmi_actualizarapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_actualizarapActionPerformed
         new ActualizarAP().setVisible(true);
     }//GEN-LAST:event_jmi_actualizarapActionPerformed
+
+    private void jmi_agregaragActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agregaragActionPerformed
+        new AgregarAG().setVisible(true);
+    }//GEN-LAST:event_jmi_agregaragActionPerformed
+
+    private void jmi_agregaracActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agregaracActionPerformed
+        new AgregarA().setVisible(true);
+    }//GEN-LAST:event_jmi_agregaracActionPerformed
 
     /**
      * @param args the command line arguments
