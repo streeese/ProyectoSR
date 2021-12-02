@@ -136,6 +136,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu8.add(jmi_agregarac);
 
         jmi_actualizarac.setText("Actualizar");
+        jmi_actualizarac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_actualizaracActionPerformed(evt);
+            }
+        });
         jMenu8.add(jmi_actualizarac);
 
         jmi_listarac.setText("Listar");
@@ -187,7 +192,7 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmi_actualizaragActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_actualizaragActionPerformed
-        // TODO add your handling code here:
+        new ActualizarAG().setVisible(true);
     }//GEN-LAST:event_jmi_actualizaragActionPerformed
 
     private void jmi_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_salirActionPerformed
@@ -234,6 +239,10 @@ public class Menu extends javax.swing.JFrame {
     private void jmi_eliminaracActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminaracActionPerformed
         new EliminarA().setVisible(true);
     }//GEN-LAST:event_jmi_eliminaracActionPerformed
+
+    private void jmi_actualizaracActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_actualizaracActionPerformed
+        new ActualizarA().setVisible(true);
+    }//GEN-LAST:event_jmi_actualizaracActionPerformed
 
     /**
      * @param args the command line arguments
