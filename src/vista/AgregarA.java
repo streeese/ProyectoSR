@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import modelo.Accesorio;
 import modelo.AlimentoPerro;
 
 /**
@@ -171,11 +172,12 @@ public class AgregarA extends javax.swing.JFrame {
                     .addComponent(jtxt_mesA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtxt_añoA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jtxt_precioA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jchk_estadoA, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jchk_estadoA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(jtxt_precioA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -324,17 +326,16 @@ public class AgregarA extends javax.swing.JFrame {
         
         estado = this.jchk_estadoA.isSelected();
         
-        AlimentoPerro alimentoPerro =  new AlimentoPerro(0, nombre, marca, fecha, precio, estado);
+        Accesorio accesorio =  new Accesorio(0, nombre, marca, fecha, precio, estado);
         Consulta registro = new Consulta();
         
-        if (registro.agregar(alimentoPerro)) {
+        if (registro.agregarA(accesorio)) {
             JOptionPane.showMessageDialog(this, "Producto Agregado", "Aviso", 1);
             
         }
         else{
             JOptionPane.showMessageDialog(this, "No fue posible agregar el producto", "Aviso", 1);
-        }
-                
+        }                
         
     }//GEN-LAST:event_jbtn_guardarAActionPerformed
 

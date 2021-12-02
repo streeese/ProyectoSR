@@ -10,6 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import modelo.AlimentoGato;
 import modelo.AlimentoPerro;
 
 /**
@@ -178,11 +179,12 @@ public class AgregarAG extends javax.swing.JFrame {
                     .addComponent(jtxt_mesAG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtxt_añoAG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jtxt_precioAG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jchk_estadoAG))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jchk_estadoAG, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(jtxt_precioAG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -335,16 +337,16 @@ public class AgregarAG extends javax.swing.JFrame {
         
         estado = this.jchk_estadoAG.isSelected();
         
-        AlimentoPerro alimentoPerro =  new AlimentoPerro(0, nombre, marca, fecha, precio, estado);
+        AlimentoGato alimentoGato =  new AlimentoGato(0, nombre, marca, fecha, precio, estado);
         Consulta registro = new Consulta();
         
-        if (registro.agregar(alimentoPerro)) {
+        if (registro.agregarG(alimentoGato)) {
             JOptionPane.showMessageDialog(this, "Producto Agregado", "Aviso", 1);
             
         }
         else{
             JOptionPane.showMessageDialog(this, "No fue posible agregar el producto", "Aviso", 1);
-        }
+        }                  
                 
          
     }//GEN-LAST:event_jbtn_guardarAGActionPerformed
