@@ -9,7 +9,6 @@ import controlador.Consulta;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import modelo.Accesorio;
-import modelo.AlimentoGato;
 
 /**
  *

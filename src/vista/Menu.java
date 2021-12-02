@@ -116,6 +116,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu7.add(jmi_listarag);
 
         jmi_eliminarag.setText("Eliminar");
+        jmi_eliminarag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_eliminaragActionPerformed(evt);
+            }
+        });
         jMenu7.add(jmi_eliminarag);
 
         jMenu1.add(jMenu7);
@@ -142,6 +147,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu8.add(jmi_listarac);
 
         jmi_eliminarac.setText("Eliminar");
+        jmi_eliminarac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_eliminaracActionPerformed(evt);
+            }
+        });
         jMenu8.add(jmi_eliminarac);
 
         jMenu1.add(jMenu8);
@@ -216,6 +226,14 @@ public class Menu extends javax.swing.JFrame {
     private void jmi_listaracActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_listaracActionPerformed
         new ListarA().setVisible(true);
     }//GEN-LAST:event_jmi_listaracActionPerformed
+
+    private void jmi_eliminaragActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminaragActionPerformed
+        new EliminarAG().setVisible(true);
+    }//GEN-LAST:event_jmi_eliminaragActionPerformed
+
+    private void jmi_eliminaracActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminaracActionPerformed
+        new EliminarA().setVisible(true);
+    }//GEN-LAST:event_jmi_eliminaracActionPerformed
 
     /**
      * @param args the command line arguments
